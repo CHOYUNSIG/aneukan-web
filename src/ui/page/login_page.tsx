@@ -14,14 +14,14 @@ export default function LoginPage() {
 
 function LoginForm() {
   return (
-    <form className="flex flex-col gap-4 min-w-[320px]">
+    <form className="flex flex-col gap-4 w-full max-sm:max-w-full">
       <div className="flex flex-col gap-2">
-        <label htmlFor="email" className="font-medium">
+        <label htmlFor="id" className="font-medium">
           아이디
         </label>
         <input
-          type="email"
-          id="email"
+          type="text"
+          id="id"
           className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-brand"
           placeholder="아이디를 입력해주세요"
         />

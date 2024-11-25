@@ -14,10 +14,10 @@ export default function RegisterPage() {
 
 function UserInformationForm() {
   return (
-    <form className="flex flex-col gap-4 min-w-[320px]">
+    <form className="flex flex-col gap-4 w-full max-sm:max-w-full">
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-2 items-center">
-          <label className="font-medium">
+          <label htmlFor="serialNumber" className="font-medium">
             홈캠 시리얼 번호
           </label>
           <button
@@ -29,24 +29,24 @@ function UserInformationForm() {
         </div>
         <input
           type="text"
-          id="texts"
+          id="serialNumber"
           className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-brand"
           placeholder="시리얼 번호를 입력해주세요"
         />
       </div>
       <div className="flex flex-col gap-2">
-        <label className="font-medium">
+        <label htmlFor="id" className="font-medium">
           아이디
         </label>
         <input
-          type="email"
-          id="email"
+          type="text"
+          id="id"
           className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-brand"
           placeholder="아이디를 입력해주세요"
         />
       </div>
       <div className="flex flex-col gap-2">
-        <label className="font-medium">
+        <label htmlFor="password" className="font-medium">
           비밀번호
         </label>
         <input
@@ -57,12 +57,12 @@ function UserInformationForm() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <label className="font-medium">
+        <label htmlFor="passwordCheck" className="font-medium">
           비밀번호 확인
         </label>
         <input
           type="password"
-          id="password"
+          id="passwordCheck"
           className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-brand"
           placeholder="비밀번호를 입력해주세요"
         />

@@ -12,14 +12,14 @@ export default function FormLayout({
   form: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-row items-center justify-center bg-brand min-h-screen w-full p-32">
-      <div className="flex flex-col gap-16">
+    <div className="flex flex-row items-center justify-center bg-brand min-h-screen w-full py-32">
+      <div className="flex flex-col gap-16 max-sm:w-full">
         <div className="flex flex-col justify-center items-center gap-4">
           <h1 className="text-4xl font-bold text-white">{title}</h1>
-          <p className="text-2xl text-white">{subtitle}</p>
+          <p className="text-lg text-white">{subtitle}</p>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="flex flex-row space-between items-center">
+          <div className="flex flex-row space-between items-center px-4">
             <>
               {totalStep > 1 &&
                 Array.from({ length: totalStep }).map((_, index) => {
@@ -48,7 +48,9 @@ export default function FormLayout({
                 })}
             </>
           </div>
-          <div className="rounded-lg bg-white p-8 shadow-lg">{form}</div>
+          <div className="flex flex-row justify-center rounded-lg bg-white p-8 shadow-lg w-[480px] max-sm:rounded-none max-sm:w-full">
+            {form}
+          </div>
         </div>
       </div>
     </div>
