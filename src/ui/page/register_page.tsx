@@ -3,8 +3,8 @@ import FormLayout from "@/ui/layout/form_layout";
 export default function RegisterPage() {
   return (
     <FormLayout
-      title="회원가입"
-      subtitle="홈캠 회원으로서 회원가입합니다."
+      title="홈캠 등록"
+      subtitle="회원가입을 통해 홈캠을 등록합니다."
       totalStep={2}
       currentStep={0}
       form={<UserInformationForm />}
