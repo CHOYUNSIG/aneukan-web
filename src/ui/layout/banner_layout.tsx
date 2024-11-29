@@ -7,7 +7,7 @@ export default function BannerLayout({
 }) {
   return (
     <>
-      <div className="flex flex-row items-center justify-center bg-brand w-full h-[50vh]">
+      <div className="flex flex-row items-center justify-center bg-brand w-full h-[50vh] shadow-inner">
         <div className="flex flex-col justify-end max-w-screen-md w-full h-full p-4 max-md:max-w-none">
           {banner}
         </div>
