@@ -4,7 +4,7 @@ import HomeBannerRouterButton from "./home_banner_router_button";
 
 export function HomeBanner() {
   return (
-    <div className="flex flex-row gap-8 justify-between w-full px-8 max-sm:flex-col">
+    <div className="flex flex-row gap-8 justify-between w-full px-4 max-sm:flex-col">
       <div className="flex flex-col gap-2 justify-end h-full text-white drop-shadow-lg">
         <h1 className="text-5xl font-bold">아늑한</h1>
         <p className="text-lg">
