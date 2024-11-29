@@ -1,19 +1,8 @@
-import BannerLayout from "../layout/banner_layout";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
-import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HomeBannerRouterButton from "./home_banner_router_button";
 
-export default function HomePage() {
-  return (
-    <BannerLayout banner={<HomeBanner />}>
-      <div className="flex flex-col gap-4 py-8">
-        <h1 className="text-2xl font-bold">소개</h1>
-      </div>
-    </BannerLayout>
-  );
-}
-
-function HomeBanner() {
+export function HomeBanner() {
   return (
     <div className="flex flex-row gap-8 justify-between w-full px-8 max-sm:flex-col">
       <div className="flex flex-col gap-2 justify-end h-full text-white drop-shadow-lg">
@@ -42,27 +31,5 @@ function HomeBanner() {
         </HomeBannerRouterButton>
       </div>
     </div>
-  );
-}
-
-function HomeBannerRouterButton({
-  width,
-  height,
-  href,
-  children,
-}: {
-  width: string;
-  height: string;
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className="flex flex-col justify-center items-start h-full bg-white text-black shadow-lg rounded-full px-8"
-      style={{ width: width || "auto", height: height || "auto" }}
-    >
-      {children}
-    </Link>
   );
 }

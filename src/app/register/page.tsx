@@ -1,4 +1,4 @@
-import RegisterPage from "@/ui/page/register_page";
+import RegisterPage from "@/ui/page/register/register_page";
 
 export default function Page() {
   return <RegisterPage />;
