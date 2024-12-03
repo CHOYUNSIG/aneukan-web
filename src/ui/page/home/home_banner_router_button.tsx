@@ -22,9 +22,9 @@ export default function HomeBannerRouterButton({
       style={{ width: width || "auto", height: height || "auto" }}
       initial={{ y: "-5%", opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "linear", ease: "easeOut", duration: 0.3 }}
       whileHover={{ scale: 1.02, backgroundColor: "black", color: "white" }}
       whileTap={{ scale: 0.98 }}
-      transition={{ type: "linear", ease: "easeOut", duration: 0.3 }}
       onClick={() => router.push(href)}
     >
       {children}

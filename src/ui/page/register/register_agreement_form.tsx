@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-export function UserAgreementForm({ id }: { id: string }) {
+export function RegisterAgreementForm({ id }: { id: string }) {
   const router = useRouter();
 
   return (

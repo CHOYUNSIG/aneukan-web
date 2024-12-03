@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export function UserInformationForm({
+export function RegisterInformationForm({
   onSubmit,
 }: {
   onSubmit: (serialNumber: string, id: string, password: string) => void;

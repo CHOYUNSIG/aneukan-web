@@ -1,9 +1,9 @@
 "use client";
 
 import FormLayout from "@/ui/layout/form_layout";
-import { UserInformationForm } from "./user_information_form";
+import { RegisterInformationForm } from "./register_information_form";
 import { useState, useCallback } from "react";
-import { UserAgreementForm } from "./user_agreement_form";
+import { RegisterAgreementForm } from "./register_agreement_form";
 
 export default function RegisterPage() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -26,9 +26,9 @@ export default function RegisterPage() {
       currentStep={currentStep}
       form={
         currentStep === 0 ? (
-          <UserInformationForm onSubmit={handleUserInformationSubmit} />
+          <RegisterInformationForm onSubmit={handleUserInformationSubmit} />
         ) : (
-          <UserAgreementForm id={id} />
+          <RegisterAgreementForm id={id} />
         )
       }
     />
