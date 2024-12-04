@@ -2,22 +2,24 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
-import useWindowSize from "@/hook/use_window_size";
+import useWindowSize from "@/client/hook/use_window_size";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export function ManagementSidebarItem({
   title,
   width,
-  isSelected,
-  onClick,
+  destinationPage,
 }: {
   title: string;
   width: string;
-  isSelected: boolean;
-  onClick: () => void;
+  destinationPage: number;
 }) {
   const windowWidth = useWindowSize().width;
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const isSelected = searchParams.get("page") === destinationPage.toString();
 
   return (
     <motion.button
@@ -32,7 +34,7 @@ export function ManagementSidebarItem({
       transition={{ type: "linear", ease: "easeOut", duration: 0.3 }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      onClick={onClick}
+      onClick={() => router.push(`/management?page=${destinationPage}`)}
     >
       <p className="font-bold">{title}</p>
       <FontAwesomeIcon

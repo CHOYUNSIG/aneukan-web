@@ -4,16 +4,27 @@ import FormLayout from "@/ui/layout/form_layout";
 import { LoginForm } from "./login_form";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+import { AuthProvider } from "@/client/context/auth_provider";
+import { useAuth } from "@/client/hook/use_auth";
 
 export default function LoginPage() {
+  return (
+    <AuthProvider>
+      <LoginPageWithContext />
+    </AuthProvider>
+  );
+}
+
+function LoginPageWithContext() {
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleLoginSubmit = useCallback(
-    (id: string, password: string) => {
-      console.log(id, password);
+    async (id: string, password: string) => {
+      await login(id, password);
       router.push("/");
     },
-    [router]
+    [router, login]
   );
 
   return (

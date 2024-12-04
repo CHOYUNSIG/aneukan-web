@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "reflect-metadata";
 import "./globals.css";
 
 export const metadata: Metadata = {

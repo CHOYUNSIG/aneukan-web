@@ -4,18 +4,29 @@ import FormLayout from "@/ui/layout/form_layout";
 import { RegisterInformationForm } from "./register_information_form";
 import { useState, useCallback } from "react";
 import { RegisterAgreementForm } from "./register_agreement_form";
+import { AuthProvider } from "@/client/context/auth_provider";
+import { useAuth } from "@/client/hook/use_auth";
 
 export default function RegisterPage() {
+  return (
+    <AuthProvider>
+      <RegisterPageWithContext />
+    </AuthProvider>
+  );
+}
+
+function RegisterPageWithContext() {
+  const { register } = useAuth();
   const [currentStep, setCurrentStep] = useState(0);
   const [id, setId] = useState("");
 
   const handleUserInformationSubmit = useCallback(
-    (serialNumber: string, id: string, password: string) => {
-      console.log(serialNumber, id, password);
+    async (serialNumber: string, id: string, password: string) => {
+      await register(serialNumber, id, password);
       setCurrentStep(1);
       setId(id);
     },
-    []
+    [register]
   );
 
   return (
