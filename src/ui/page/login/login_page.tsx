@@ -2,29 +2,35 @@
 
 import FormLayout from "@/ui/layout/form_layout";
 import { LoginForm } from "./login_form";
-import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { AuthProvider } from "@/client/context/auth_provider";
 import { useAuth } from "@/client/hook/use_auth";
+import { AxiosError } from "axios";
 
 export default function LoginPage() {
-  return (
-    <AuthProvider>
-      <LoginPageWithContext />
-    </AuthProvider>
-  );
-}
-
-function LoginPageWithContext() {
-  const router = useRouter();
-  const { login } = useAuth();
+  const { login, redirectWithAuth } = useAuth();
 
   const handleLoginSubmit = useCallback(
     async (id: string, password: string) => {
-      await login(id, password);
-      router.push("/");
+      try {
+        await login(id, password);
+        await redirectWithAuth("/management");
+      } catch (error) {
+        if (error instanceof AxiosError) {
+          switch (error.response?.status) {
+            case 401:
+              alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+              break;
+            case 404:
+              alert("존재하지 않는 아이디입니다.");
+              break;
+            default:
+              alert("알 수 없는 오류가 발생했습니다.");
+              break;
+          }
+        }
+      }
     },
-    [router, login]
+    [redirectWithAuth, login]
   );
 
   return (

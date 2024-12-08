@@ -1,33 +1,21 @@
-import { RegisterRequest } from "@/data/dto/front/responses";
+import { RegisterRequest } from "@/data/dto/responses";
+import { register } from "@/server/api/endpoint/register";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-  console.log("request body: ", await request.json());
-
   try {
     const body = (await request.json()) as RegisterRequest;
+    console.log("body: ", body);
 
-    const response = await fetch(`${process.env.BACKEND_URL}/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+    const token = await register(body.id, body.name, body.serialNumber, body.password);
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-
-    return NextResponse.json({ message: data.message });
+    return NextResponse.json({ token: token });
   } catch (error) {
     console.error(error);
 
     return NextResponse.json(
       { error: "회원가입에 실패했습니다." },
-      { status: 401 }
+      { status: 500 }
     );
   }
 }

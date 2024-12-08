@@ -1,5 +1,6 @@
 import ManagementPage from "@/ui/page/management/management_page";
 import { headers } from "next/headers";
+
 export default async function Page({
   searchParams,
 }: {
@@ -10,7 +11,13 @@ export default async function Page({
   const headersList = await headers();
 
   const authorization = headersList.get("authorization");
-  console.info(authorization);
+  const token = authorization?.split(" ")[1];
+  console.info(token);
 
-  return <ManagementPage searchParams={resolvedParams} />;
+  return (
+    <ManagementPage
+      searchParams={resolvedParams}
+      token={token}
+    />
+  );
 }

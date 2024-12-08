@@ -5,9 +5,16 @@ import { useState } from "react";
 export function RegisterInformationForm({
   onSubmit,
 }: {
-  onSubmit: (serialNumber: string, id: string, password: string) => void;
+  onSubmit: (
+    serialNumber: string,
+    id: string,
+    name: string,
+    password: string,
+    passwordConfirm: string
+  ) => void;
 }) {
   const [serialNumber, setSerialNumber] = useState("");
+  const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
@@ -34,6 +41,29 @@ export function RegisterInformationForm({
           value={serialNumber}
           onChange={(e) => {
             setSerialNumber(e.target.value);
+          }}
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-row gap-2 items-center">
+          <label htmlFor="name" className="font-medium">
+            이름
+          </label>
+          <button
+            type="button"
+            className="bg-black text-white w-6 h-6 rounded-full hover:bg-gray-800 transition-colors"
+          >
+            ?
+          </button>
+        </div>
+        <input
+          type="text"
+          id="name"
+          className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-brand"
+          placeholder="이름을 입력해주세요"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
           }}
         />
       </div>
@@ -87,11 +117,7 @@ export function RegisterInformationForm({
           type="button"
           className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition-colors"
           onClick={() => {
-            if (password !== passwordCheck) {
-              alert("비밀번호가 일치하지 않습니다.");
-              return;
-            }
-            onSubmit(serialNumber, id, password);
+            onSubmit(serialNumber, id, name, password, passwordCheck);
           }}
         >
           회원가입

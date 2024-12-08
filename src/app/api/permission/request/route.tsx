@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-  console.log("/api/permission/request request: ", request);
-
   try {
     const token = request.headers.get("Authorization")?.split(" ")[1];
 
@@ -26,14 +24,12 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       { error: "권한 조회에 실패했습니다." },
-      { status: 401 }
+      { status: 500 }
     );
   }
 }
 
 export async function PUT(request: NextRequest) {
-  console.log("/api/permission/request request: ", request);
-
   try {
     const token = request.headers.get("Authorization")?.split(" ")[1];
 
@@ -57,14 +53,12 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json(
       { error: "권한 요청 승인에 실패했습니다." },
-      { status: 401 }
+      { status: 500 }
     );
   }
 }
 
 export async function DELETE(request: NextRequest) {
-  console.log("request body: ", await request.json());
-
   try {
     const token = request.headers.get("Authorization")?.split(" ")[1];
     const id = request.nextUrl.searchParams.get("id");
@@ -90,7 +84,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json(
       { error: "권한 요청 취소에 실패했습니다." },
-      { status: 401 }
+      { status: 500 }
     );
   }
 }
