@@ -8,6 +8,7 @@ export async function POST(request: NextRequest) {
     console.log("body: ", body);
 
     const token = await register(body.id, body.name, body.serialNumber, body.password);
+    console.log("server response: ", token);
 
     return NextResponse.json({ token: token });
   } catch (error) {

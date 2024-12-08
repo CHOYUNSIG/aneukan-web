@@ -6,20 +6,31 @@ import ManagementInfoView from "./info/management_info_view";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import ManagementLogView from "./log/managerment_log_view";
+import jwt from "jsonwebtoken";
+
+const SECRET_KEY = process.env.JWT_SECRET!;
 
 export default function ManagementPage({
   searchParams,
-  token,
 }: {
-  searchParams: { page?: string };
-  token: string | undefined;
+  searchParams: { page?: string; token?: string };
 }) {
-  if (token === undefined) {
+  const { page, token } = searchParams;
+
+  if (!token) {
     redirect("/login");
   }
 
-  if (!["0", "1", "2"].includes(searchParams.page ?? "")) {
-    redirect(`/management?page=0`);
+  try {
+    jwt.verify(token, SECRET_KEY);
+  } catch {
+    redirect("/login");
+  }
+
+  const id = (jwt.decode(token) as { id: number }).id;
+
+  if (!["0", "1", "2"].includes(page ?? "")) {
+    redirect(`/management?page=0&token=${token}`);
   }
 
   return (
@@ -29,12 +40,12 @@ export default function ManagementPage({
           labels={["사용자 정보", "열람 권한 관리", "로그 관리"]}
         />
         <Suspense fallback={<p>Loading...</p>}>
-          {searchParams.page === "0" ? (
-            <ManagementInfoView token={token} />
-          ) : searchParams.page === "1" ? (
-            <ManagementPermissionView token={token} />
-          ) : searchParams.page === "2" ? (
-            <ManagementLogView token={token} />
+          {page === "0" ? (
+            <ManagementInfoView id={id} />
+          ) : page === "1" ? (
+            <ManagementPermissionView id={id} />
+          ) : page === "2" ? (
+            <ManagementLogView id={id} />
           ) : null}
         </Suspense>
       </div>

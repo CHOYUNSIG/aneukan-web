@@ -1,3 +1,4 @@
-export default function ManagementPermissionView({ token }: { token: string }) {
-  return <div>ManagementPermissionView {token}</div>;
+export default function ManagementPermissionView({ id }: { id: number }) {
+  return <div>ManagementPermissionView {id}</div>;
 }
+

@@ -5,15 +5,18 @@ import { LoginForm } from "./login_form";
 import { useCallback } from "react";
 import { useAuth } from "@/client/hook/use_auth";
 import { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const { login, redirectWithAuth } = useAuth();
+  const { login } = useAuth();
+  const router = useRouter();
 
   const handleLoginSubmit = useCallback(
     async (id: string, password: string) => {
       try {
-        await login(id, password);
-        await redirectWithAuth("/management");
+        await login(id, password, async (token) => {
+          router.push(`/management?token=${token}`);
+        });
       } catch (error) {
         if (error instanceof AxiosError) {
           switch (error.response?.status) {
@@ -30,7 +33,7 @@ export default function LoginPage() {
         }
       }
     },
-    [redirectWithAuth, login]
+    [login, router]
   );
 
   return (

@@ -19,7 +19,11 @@ export function ManagementSidebarItem({
   const windowWidth = useWindowSize().width;
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isSelected = searchParams.get("page") === destinationPage.toString();
+
+  const token = searchParams.get("token");
+  const page = searchParams.get("page");
+
+  const isSelected = page === destinationPage.toString();
 
   return (
     <motion.button
@@ -34,7 +38,7 @@ export function ManagementSidebarItem({
       transition={{ type: "linear", ease: "easeOut", duration: 0.3 }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      onClick={() => router.push(`/management?page=${destinationPage}`)}
+      onClick={() => router.push(`/management?page=${destinationPage}&token=${token}`)}
     >
       <p className="font-bold">{title}</p>
       <FontAwesomeIcon
