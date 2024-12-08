@@ -22,7 +22,6 @@ export function ManagementSidebarItem({
 
   const token = searchParams.get("token");
   const page = searchParams.get("page");
-
   const isSelected = page === destinationPage.toString();
 
   return (
@@ -38,12 +37,14 @@ export function ManagementSidebarItem({
       transition={{ type: "linear", ease: "easeOut", duration: 0.3 }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      onClick={() => router.push(`/management?page=${destinationPage}&token=${token}`)}
+      onClick={() =>
+        router.push(`/management?page=${destinationPage}&token=${token}`)
+      }
     >
       <p className="font-bold">{title}</p>
       <FontAwesomeIcon
         icon={windowWidth < 1024 ? faChevronDown : faChevronRight}
-        className="w-4 h-4"
+        className="size-4"
       />
     </motion.button>
   );

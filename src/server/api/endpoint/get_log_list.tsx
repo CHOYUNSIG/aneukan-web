@@ -8,7 +8,7 @@ export default async function getLogList(id: number) {
   const data = response.data;
   const logList = plainToInstance(LogResponse, data);
   return logList.map(
-    (log) => new Log(log.logId, log.videoUrl, log.timestamp)
+    (log) => new Log(log.logId, log.videoUrl, new Date(log.timestamp))
   );
 }
 
@@ -16,13 +16,13 @@ class LogResponse {
   @Expose({ name: "id" }) logId: number;
   @Expose({ name: "homecamid" }) homecamId: number;
   @Expose({ name: "videourl" }) videoUrl: string;
-  @Expose({ name: "savetime" }) timestamp: Date;
+  @Expose({ name: "savetime" }) timestamp: string;
 
   constructor(
     logId: number,
     homecamId: number,
     videoUrl: string,
-    timestamp: Date
+    timestamp: string
   ) {
     this.logId = logId;
     this.homecamId = homecamId;

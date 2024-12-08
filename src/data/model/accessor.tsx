@@ -1,9 +1,9 @@
 export class Accessor {
   id: number;
-  name: string;
+  isPermitted: boolean;
 
-  constructor(id: number, name: string) {
+  constructor(id: number, isPermitted: boolean) {
     this.id = id;
-    this.name = name;
+    this.isPermitted = isPermitted;
   }
 }

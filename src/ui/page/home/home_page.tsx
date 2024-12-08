@@ -1,5 +1,6 @@
 import BannerLayout from "../../layout/banner_layout";
 import { HomeBanner } from "./home_banner";
+import HomeFooter from "./home_footer";
 import HomeIntroduction from "./home_introdution";
 
 export default function HomePage() {
@@ -10,6 +11,7 @@ export default function HomePage() {
           <HomeIntroduction />
         </div>
       </div>
+      <HomeFooter />
     </BannerLayout>
   );
 }

@@ -1,3 +1,4 @@
+import { Accessor } from "@/data/model/accessor";
 import api from "@/server/api/api";
 import { Expose } from "class-transformer";
 import { plainToInstance } from "class-transformer";
@@ -9,7 +10,7 @@ export default async function getAccessorList(serialNumber: string) {
     );
     const accessorList = plainToInstance(AccessorResponse, response.data).map(
       (accessor: AccessorResponse) => {
-        return [accessor.accessorId.toString(), accessor.permit];
+        return new Accessor(accessor.accessorId, accessor.permit);
       }
     );
 

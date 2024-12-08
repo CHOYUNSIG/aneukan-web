@@ -1,23 +1,12 @@
 import { Me } from "@/data/model/me";
 import api from "../api";
-import { Expose, plainToInstance } from "class-transformer";
+import { Expose } from "class-transformer";
 
-export const getMyInfo = async (): Promise<Me | null> => {
+export const getMyInfo = async (id: number): Promise<Me | null> => {
   try {
-    const response = await api.get(`/api/user`);
-
-    const userInfoResponse = plainToInstance(
-      UserInfoResponse,
-      response.data
-    )[0];
-
-    const user = new Me(
-      userInfoResponse.id,
-      userInfoResponse.name,
-      userInfoResponse.email,
-      userInfoResponse.serialNumber
-    );
-
+    const response = await api.get(`/user/?id=${id}`);
+    const dto = response.data as UserInfoResponse;
+    const user = new Me(dto.id, dto.userId, dto.name, "1234567890");
     return user;
   } catch (error) {
     console.error(error);
@@ -27,14 +16,14 @@ export const getMyInfo = async (): Promise<Me | null> => {
 
 export class UserInfoResponse {
   @Expose({ name: "id" }) id: number;
+  @Expose({ name: "identifier" }) userId: string;
   @Expose({ name: "name" }) name: string;
-  @Expose({ name: "email" }) email: string;
-  @Expose({ name: "serialnum" }) serialNumber: string;
+  @Expose({ name: "phone_num" }) phoneNumber: string;
 
-  constructor(id: number, name: string, email: string, serialNumber: string) {
+  constructor(id: number, userId: string, name: string, phoneNumber: string) {
     this.id = id;
+    this.userId = userId;
     this.name = name;
-    this.email = email;
-    this.serialNumber = serialNumber;
+    this.phoneNumber = phoneNumber;
   }
 }

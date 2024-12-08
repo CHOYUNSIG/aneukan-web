@@ -27,10 +27,10 @@ export default function ManagementPage({
     redirect("/login");
   }
 
-  const id = (jwt.decode(token) as { id: number }).id;
+  const { id } = jwt.decode(token) as { id: number };
 
   if (!["0", "1", "2"].includes(page ?? "")) {
-    redirect(`/management?page=0&token=${token}`);
+    redirect(`/management?page=0&token=${token}&id=${id}`);
   }
 
   return (
@@ -45,7 +45,7 @@ export default function ManagementPage({
           ) : page === "1" ? (
             <ManagementPermissionView id={id} />
           ) : page === "2" ? (
-            <ManagementLogView id={id} />
+            <ManagementLogView id={Number(id)} />
           ) : null}
         </Suspense>
       </div>
