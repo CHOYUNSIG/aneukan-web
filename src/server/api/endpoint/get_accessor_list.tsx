@@ -1,16 +1,15 @@
 import { Accessor } from "@/data/model/accessor";
 import api from "@/server/api/api";
-import { Expose } from "class-transformer";
 import { plainToInstance } from "class-transformer";
 
 export default async function getAccessorList(serialNumber: string) {
   try {
     const response = await api.get(
-      `/homecam/accesshomcame?serialnum=${serialNumber}`
+      `/homecam/accesshomecam?serialnum=${serialNumber}`
     );
     const accessorList = plainToInstance(AccessorResponse, response.data).map(
       (accessor: AccessorResponse) => {
-        return new Accessor(accessor.accessorId, accessor.permit);
+        return new Accessor(accessor.userid, accessor.access);
       }
     );
 
@@ -21,13 +20,15 @@ export default async function getAccessorList(serialNumber: string) {
 }
 
 class AccessorResponse {
-  @Expose({ name: "userId" }) accessorId: number;
-  @Expose({ name: "userhomecam" }) serialNumber: string;
-  @Expose({ name: "access" }) permit: boolean;
+  id: number;
+  userid: number;
+  userhomecam: string;
+  access: boolean;
 
-  constructor(accessorId: number, serialNumber: string, permit: boolean) {
-    this.accessorId = accessorId;
-    this.serialNumber = serialNumber;
-    this.permit = permit;
+  constructor(id: number, userid: number, userhomecam: string, access: boolean) {
+    this.id = id;
+    this.userid = userid;
+    this.userhomecam = userhomecam;
+    this.access = access;
   }
 }
