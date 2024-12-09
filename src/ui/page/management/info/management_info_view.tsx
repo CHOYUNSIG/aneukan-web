@@ -4,7 +4,6 @@ import ManagementExceptionIndicator from "../management_exception_indicator";
 
 export default async function ManagementInfoView({ id }: { id: number }) {
   const me = await getMyInfo(id);
-  console.log("me: ", me);
 
   if (!me) {
     return (
@@ -28,11 +27,10 @@ export default async function ManagementInfoView({ id }: { id: number }) {
       <hr />
       <div className="flex flex-row justify-between items-center">
         <p className="font-bold text-lg">
-          아이디: <span className="text-gray-500">{me.userId}</span>
+          아이디: <span className="text-gray-500">{me.id}</span>
         </p>
       </div>
       <hr />
-      {/*
       <div className="flex flex-row justify-between items-center">
         <p className="font-bold text-lg">
           등록 시리얼 번호:{" "}
@@ -41,7 +39,6 @@ export default async function ManagementInfoView({ id }: { id: number }) {
           </span>
         </p>
       </div>
-      */}
     </div>
   );
 }

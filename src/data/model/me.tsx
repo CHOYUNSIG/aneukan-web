@@ -1,11 +1,13 @@
 export class Me {
-  id: number;
-  userId: string;
+  key: number;
+  id: string;
   name: string;
+  serialNumber: string;
 
-  constructor(id: number, userId: string, name: string) {
+  constructor(key: number, id: string, name: string, serialNumber: string) {
+    this.key = key;
     this.id = id;
-    this.userId = userId;
     this.name = name;
+    this.serialNumber = serialNumber;
   }
 }

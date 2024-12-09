@@ -1,9 +1,13 @@
 export class Accessor {
-  id: number;
-  isPermitted: boolean;
+  key: number;
+  id: string;
+  name: string;
+  phoneNumber: string;
 
-  constructor(id: number, isPermitted: boolean) {
+  constructor(key: number, id: string, name: string, phoneNumber: string) {
+    this.key = key;
     this.id = id;
-    this.isPermitted = isPermitted;
+    this.name = name;
+    this.phoneNumber = phoneNumber;
   }
 }

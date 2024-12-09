@@ -29,7 +29,7 @@ export default function ManagementPage({
 
   const { id } = jwt.decode(token) as { id: number };
 
-  if (!["0", "1", /* "2" */].includes(page ?? "")) {
+  if (!["0", "1", "2"].includes(page ?? "")) {
     redirect(`/management?page=0&token=${token}&id=${id}`);
   }
 
@@ -37,16 +37,16 @@ export default function ManagementPage({
     <BannerLayout banner={<ManagementBanner />} bannerHeight="256px">
       <div className="flex flex-row w-full px-16 py-4 max-lg:flex-col max-lg:px-4">
         <ManagementSidebar
-          labels={["사용자 정보", "열람 권한 관리", /* "로그 관리" */]}
+          labels={["사용자 정보", "열람 권한 관리", "로그 관리"]}
         />
         <Suspense fallback={<p>Loading...</p>}>
           {page === "0" ? (
             <ManagementInfoView id={id} />
           ) : page === "1" ? (
             <ManagementPermissionView id={id} />
-          ) : /* page === "2" ? (
+          ) : page === "2" ? (
             <ManagementLogView id={Number(id)} />
-          ) :*/ null}
+          ) : null}
         </Suspense>
       </div>
     </BannerLayout>
