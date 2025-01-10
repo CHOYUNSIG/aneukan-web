@@ -5,7 +5,7 @@
 
 <h2>🍎 소개</h2>
 <div>
-  <blockquote>아늑한은 인공지능 낙상 감지 모델이 탑재된 홈캠을 이용해 고령층의 낙상 사고를 탐지하고 보호자 및 관련 기관에 신속한 연락을 전달하는 서비스이다. 본 리포지토리는 아늑한 서비스에서 본인의 집에 설치된 홈캠의 열람 및 접근 권한과 정보를 관리할 수 있는 관리자 웹 페이지를 구현한 프로젝트이다. 낙상 감지 알림을 수신하고 낙상 기록을 열람할 수 있는 모바일 클라이언트를 구현한 프로젝트는 <a href="https://github.com/CHOYUNSIG/aneukan-app">이 곳</a>에서 볼 수 있다.</blockquote>
+  <blockquote>아늑한은 인공지능 낙상 감지 모델이 탑재된 홈캠을 이용해 고령층의 낙상 사고를 탐지하고 보호자 및 관련 기관에 신속한 연락을 전달하는 서비스이다. 아늑한 서비스에서는 홈캠을 통해 낙상 감지를 받는 피감시자가 자신의 집에 설치된 홈캠을 제어할 수 있는 권한을 가진다. 본 리포지토리는 피감시자가 본인의 집에 설치된 홈캠의 열람 권한과 정보를 관리할 수 있는 홈캠 관리자 웹 페이지를 구현한 프로젝트이다. 낙상 감지 알림을 수신하고 낙상 기록을 열람할 수 있는 모바일 클라이언트를 구현한 프로젝트는 <a href="https://github.com/CHOYUNSIG/aneukan-app">이 곳</a>에서 볼 수 있다.</blockquote>
 </div>
 
 <h2>📷 스냅샷</h2>
@@ -13,6 +13,7 @@
   <div align=center>
     <img src="https://github.com/user-attachments/assets/a1f1c1f5-f9c6-412d-b28c-9b9a0b3d09d3" width=75% />
   </div>
+  <h3>홈 화면</h3>
   <blockquote>
     서비스의 간단한 소개를 볼 수 있는 홈 화면이다. 홈캠 관리자로 등록하거나, 등록된 홈캠을 관리할 사용자는 페이지 상단의 버튼을 눌러 로그인 또는 등록 페이지로 이동할 수 있다.
   </blockquote>
@@ -20,6 +21,7 @@
   <div align=center>
     <img src="https://github.com/user-attachments/assets/f22c9ae4-2cdd-4a96-8cff-caacc53e8ea6" width=75% />
   </div>
+  <h3>로그인</h3>
   <blockquote>
     사용자는 홈캠마다 부여된 시리얼 번호를 통해 관리자 계정을 등록할 수 있다. 등록된 계정으로 로그인하면 해당 계정과 연결된 홈캠을 관리할 수 있는 페이지로 이동할 수 있다.
   </blockquote>
@@ -27,8 +29,9 @@
   <div align=center>
     <img src="https://github.com/user-attachments/assets/3a28c2f0-c97b-440c-8427-90ca72862cd6" width=75% />
   </div>
+  <h3>홈캠 관리</h3>
   <blockquote>
-    관리자 계정으로 접속하면 해당 홈캠의 열람 권한과 낙상 기록 영상 등을 관리할 수 있다.
+    관리자 계정으로 접속하면 해당 홈캠의 정보, 낙상 기록 및 영상 열람 권한, 사용 기록 등을 관리할 수 있다.
   </blockquote>
   <hr />
   <div align=center>
@@ -36,6 +39,7 @@
     <img src="https://github.com/user-attachments/assets/ed8da2d1-dcaa-4d8a-a7ef-ff9c74c2c534" width=30% />
     <img src="https://github.com/user-attachments/assets/a9d93c75-fd10-4d4e-af71-3e32d2ccd266" width=30% />
   </div>
+  <h3>반응형 디자인</h3>
   <blockquote>
     모든 페이지는 모바일에서도 이용이 편리하도록 반응형 스타일링으로 구성되었다. 또한 고령층 사용자가 많은 서비스의 특성을 고려하여 큰 글씨 크기와 직관적인 사용자 인터페이스를 갖추도록 하였다.
   </blockquote>
